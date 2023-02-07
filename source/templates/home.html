@@ -1,0 +1,14 @@
+{% extends './base.html' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block body %}
+<h1>Bienvenid@,  {{ current_user.NOMBRES}}!!!</h1>
+<a class="btn btn-secondary" href="{{ url_for('listar_usuarios') }}">Consultar Usuarios</a>
+<a class="btn btn-secondary" href="{{ url_for('Registrar_usuarios') }}">Registrar Usuarios</a>
+<p> </p>
+<a class="btn btn-secondary" href="{{ url_for('logout') }}">Cerrar Sesión</a>
+{% endblock %}
+
+<!---<a class="btn btn-secondary" href="{{ url_for('Consultar_usuario'[id]) }}">Consultar Usuarios</a>-->

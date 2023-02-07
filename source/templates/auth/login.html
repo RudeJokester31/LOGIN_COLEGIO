@@ -1,0 +1,62 @@
+{% extends './base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="container ">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-6 ">
+                    <img id="logo" src="{{ url_for('static', filename='img/logo.png') }}">
+                </div>
+                <div class="col-lg-6">
+                    <img id="logo1" src="{{ url_for('static', filename='img/logo1.png') }}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <form class="form-signin" action="/login" method="POST">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <br />
+                {% for message in messages %}
+                <div class="alert alert-primary alert-dismissible" role="alert">
+                    <strong>{{ message }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <h1 class="h2 mb-3 fw-bald">Inicie Sesión</h1>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="username">
+                    <label for="username">username</label>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="password" class="form-control" name="password" placeholder="password">
+                    <label for="password">password</label>
+                </div>
+                <div class="checkbox mb-2">
+                    <label>
+                        <input type="checkbox" value="Recordarme"> Recordarme
+                    </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary mb-3 fw-arial" type="submit">Entrar</button>
+                <button class="btn-secondary btn w-100" type="submit">Recuperar Contraseña</button>
+                <p class="mt-5 mb-3 text-muted">& Copyright(PIN II); 2023</p>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
