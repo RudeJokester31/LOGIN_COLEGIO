@@ -7,42 +7,53 @@
 {% endblock %}
 
 {% block body %}
-<form class="form-signin" action="/login" method="POST">
-    <div>
-        <img class="mb-3" src="{{ url_for('static', filename='img/logo1.gif') }}" alt="320" width="320" height="320">
-    </div>
-    {% with messages = get_flashed_messages() %}
+<div class="container ">
+    <div class="row">
+        <div class="col-lg-8 bg-warning">
+            <div>
+                <img class="mb-3 mt-3 rounded img-fluid" src="{{ url_for('static', filename='img/logo1.gif') }}">
+            </div>
+        </div>
+        <div class="col-lg-4 ">
+            {% with messages = get_flashed_messages() %}
 
-    {% if messages %}
-    <br />
-    {% for message in messages %}
-    <div class="alert alert-warning d-flex align-items-center alert-dismissible" role="alert">
-        <strong>{{ message }}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-    </div>
-    {% endfor %}
+            {% if messages %}
+            <br />
+            {% for message in messages %}
+            <div class="alert alert-warning d-flex align-items-center alert-dismissible" role="alert">
+                <strong>{{ message }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+            </div>
+            {% endfor %}
 
-    {% endif %}
+            {% endif %}
 
-    {% endwith %}
-    <h1 class="h2 mb-3 fw-bald" style="color: black;">Inicia Sesión</h1>
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-    <div class="form-floating">
-        <input type="text" class="form-control" id="username" name="username" placeholder="username">
-        <label for="username">Usuario</label>
+            {% endwith %}
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1 class="h2 mb-3 fw-bald" style="color: black;">Inicia Sesión</h1>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="form-floating">
+                <input type="text" class="form-control" id="username" name="username" placeholder="username">
+                <label for="username">Usuario</label>
+            </div>
+            <div class="form-floating mt-2">
+                <input type="password" class="form-control" name="password" placeholder="password">
+                <label for="password">Contraseña</label>
+            </div>
+            <div class="checkbox mb-2">
+                <label>
+                    <input type="checkbox" value="Recordarme"> Recuerdame
+                </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-warning mb-2 fw-bald" type="submit"
+                style="color: #000000;">Entrar</button>
+            <button class="btn btn-link" type="submit" style="color: #ffc107;">Recuperar Contraseña</button>
+            <p class="mt-5 mb-3 text-muted">@Copyright 2023</p>
+        </div>
     </div>
-    <div class="form-floating mt-2">
-        <input type="password" class="form-control" name="password" placeholder="password">
-        <label for="password">Contraseña</label>
-    </div>
-    <div class="checkbox mb-2">
-        <label>
-            <input type="checkbox" value="Recordarme"> Recuerdame
-        </label>
-    </div>
-    <button class="w-100 btn btn-lg btn-warning mb-2 fw-bald" type="submit" style="color: #000000;">Entrar</button>
-    <button class="btn btn-link" type="submit" style="color: #ffc107;">Recuperar Contraseña</button>
-    <p class="mt-5 mb-3 text-muted">@Copyright 2023</p>
-
-</form>
+</div>
 {% endblock %}
