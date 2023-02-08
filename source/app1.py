@@ -68,7 +68,7 @@ def protected():
 @login_required
 def listar_usuarios():
     try:
-        url = "http://192.168.101.22:5000/usuarios"
+        url = "http://192.168.1.11:5000/usuarios"
         datos = requests.get(url)
         usuarios = datos.text
         usuarios = json.loads(usuarios)
