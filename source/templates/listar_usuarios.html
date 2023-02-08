@@ -1,0 +1,24 @@
+{% extends './base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block body %}
+<br>
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr class="text-center">
+            <td>ID</td>
+            <td>NOMBRES</td>
+            <td>APELLIDOS</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuarios in employee %}
+        <tr class="text-center">
+            <td>{{(usuarios.id)}}</td>
+            <td>{{(usuarios.NOMBRES)}}</td>
+            <td>{{(usuarios.NOMBRES)}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
