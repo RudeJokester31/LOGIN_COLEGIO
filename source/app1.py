@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user, login_required
 from flask_wtf.csrf import CSRFProtect
-from config1 import config
+from config1 import config, Config
 import requests
 import json
 
@@ -16,6 +16,7 @@ app = Flask(__name__)
 csrf = CSRFProtect()
 db = MySQL(app)
 login_manager_app = LoginManager(app)
+URL=Config()
 
 
 @login_manager_app.user_loader
@@ -68,7 +69,7 @@ def protected():
 @login_required
 def listar_usuarios():
     try:
-        url = "http://192.168.1.11:5000/usuarios"
+        url = URL.IP+"usuarios"
         datos = requests.get(url)
         usuarios = datos.text
         usuarios = json.loads(usuarios)
@@ -124,4 +125,4 @@ if __name__ == '__main__':
     csrf.init_app(app)
     app.register_error_handler(401, status_401)
     app.register_error_handler(404, status_404)
-    app.run(host="", port=9566)
+    app.run(host="0.0.0.0", port=9566)

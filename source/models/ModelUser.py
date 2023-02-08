@@ -1,14 +1,17 @@
 from .entities.User import User
 import requests
 import json
+from config1 import Config
 
 
 class ModelUser():
 
+    url=Config()
+
     @classmethod
     def login(self, user):
         try:
-            url = "http://192.168.101.22:5000/login"
+            url = self.url.IP+"login"
             param = {"username": user.username, "password": user.password}
             datos = requests.post(url, json=param)
             logged_user = json.loads(datos.text)
@@ -24,7 +27,7 @@ class ModelUser():
     @classmethod
     def get_by_id(self, id):
         try:
-            url = "http://192.168.101.22:5000/get_by_id"
+            url = self.url.IP+"get_by_id"
             param = {"id": id}
             datos = requests.post(url, json=param)
             row = json.loads(datos.text)
