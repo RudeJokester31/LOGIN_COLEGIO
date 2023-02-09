@@ -1,1 +1,159 @@
 {% extends './base.html' %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-success shadow">
+            <div
+                class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 fw-bold">
+                <a href="/home"
+                    class="d-flex align-items-center pb-1 mb-md-4 me-md-auto text-white text-decoration-none shadow-lg">
+                    <img src="{{ url_for('static', filename='img/huellaw.png') }}" alt="hugenerd" width="30" height="30"
+                        class="rounded-circle">
+                    <span class="fs-3 d-none d-sm-inline">B-PASS C<div></div></span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start fw-bold"
+                    id="menu">
+                    <li class="nav-item">
+                        <a href="/home" class="nav-link align-middle px-0 text-white">
+                            <img src="{{ url_for('static', filename='img/dash2.png') }}" alt="hugenerd" width="30"
+                                height="30" class="rounded-circle">
+                            <span class="ms-1 d-none d-sm-inline">Inicio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('listar_usuarios') }}" class="nav-link px-0 align-middle text-white">
+                            <img src="{{ url_for('static', filename='img/lu2.png') }}" alt="hugenerd" width="30"
+                                height="30" class="rounded-circle">
+                            <span class="ms-1 d-none d-sm-inline">Listar Usuarios</span>
+                        </a>
+                        <!-- <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href="{{ url_for('listar_usuarios') }}" class="nav-link px-0 align-middle text-white">
+                            <img src="{{ url_for('static', filename='img/consul1.png') }}" alt="hugenerd" width="30"
+                                height="30" class="rounded-circle">
+                            <span class="ms-1 d-none d-sm-inline">Consultar Usuario</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('Registrar_usuarios') }}" class="nav-link px-0 align-middle text-white">
+                            <img src="{{ url_for('static', filename='img/reg1.png') }}" alt="hugenerd" width="30"
+                                height="30" class="rounded-circle">
+                            <span class="ms-1 d-none d-sm-inline">Registrar Usuarios</span>
+                        </a>
+                        <!-- <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href="#" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+                            <img src="{{ url_for('static', filename='img/soli1.png') }}" alt="hugenerd" width="30"
+                                height="30" class="rounded-circle">
+                            <span class="ms-1 d-none d-sm-inline">Solicitudes Radicadas</span>
+                        </a>
+                        <!-- <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0 align-middle text-white">
+                            <img src="{{ url_for('static', filename='img/lu1.png') }}" alt="hugenerd" width="30"
+                                height="30" class="rounded-circle">
+                            <span class="ms-1 d-none d-sm-inline">Actualizar Usuarios</span> </a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{{ url_for('static', filename='img/user1.png') }}" alt="hugenerd" width="30"
+                            height="30" class="rounded-circle">
+                        <span class="d-none d-sm-inline mx-1">{{ current_user.NOMBRES}}</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-success text-small shadow">
+                        <!-- <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li> -->
+                        <li><a class="dropdown-item" href="/login">Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col py-3">
+            <nav class="navbar navbar-expand-lg navbar-light shadow-lg" style="background-color: #c4fcf0;">
+                <div class="container-fluid">
+                    <img src="{{ url_for('static', filename='img/dash1.png') }}" alt="hugenerd" width="30" height="30"
+                        class="rounded-circle">
+                    <a class="navbar-brand" href="/home">Inicio</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#"></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"></a>
+                            </li>
+                            <!-- <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul> -->
+                            <!-- </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+                            </li>
+                        </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-2 shadow-lg" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-light shadow-sm" style="color: #000000;" type="submit">
+                                <img src="{{ url_for('static', filename='img/bus1.png') }}" alt="hugenerd" width="30"
+                                    height="30" class="rounded-circle">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

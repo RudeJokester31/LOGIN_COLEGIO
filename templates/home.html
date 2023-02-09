@@ -1,3 +1,115 @@
-{% extends './base.html' %}
+{% extends './sidebar.html' %}
 
 {% block title %}Bienvenido{% endblock %}
+
+{% block content %}
+<br></br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow-lg" style="width: 18rem;">
+                <div class="card-body">
+                    <h3 class="card-title fw-bold">Asistencia Hoy</h3>
+                    <h4 class="card-text fw-bold">1,100</h4>
+                    <a href="#" class="btn btn-outline-success disabled">
+                        <img src="{{ url_for('static', filename='img/dash1.png') }}" alt="hugenerd" width="30"
+                            height="30" class="rounded-circle"> Actualizado</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow-lg" style="width: 18rem;">
+                <div class="card-body">
+                    <h3 class="card-title fw-bold">Inasistencia Hoy</h3>
+                    <h4 class="card-text fw-bold">100</h4>
+                    <a href="#" class="btn btn-outline-success disabled">
+                        <img src="{{ url_for('static', filename='img/dash1.png') }}" alt="hugenerd" width="30"
+                            height="30" class="rounded-circle"> Actualizado</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow-lg" style="width: 18rem;">
+                <div class="card-body">
+                    <h3 class="card-title fw-bold">Total Estudiantes</h3>
+                    <h4 class="card-text fw-bold">1,200</h4>
+                    <a href="#" class="btn btn-outline-success disabled">
+                        <img src="{{ url_for('static', filename='img/dash1.png') }}" alt="hugenerd" width="30"
+                            height="30" class="rounded-circle"> Actualizado</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow-lg" style="width: 18rem;">
+                <div class="card-body">
+                    <h3 class="card-title fw-bold">Promedio</h3>
+                    <h4 class="card-text fw-bold">1,115</h4>
+                    <a href="#" class="btn btn-outline-success disabled">
+                        <img src="{{ url_for('static', filename='img/dash1.png') }}" alt="hugenerd" width="30"
+                            height="30" class="rounded-circle"> Actualizado</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <br></br>
+            <div class="card shadow-lg" style="width: 50rem; height: 26rem;">
+                <div class="card-body">
+                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="10000">
+                                <img src="..." class="d-block w-100 rounded-3" alt="...">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <img src="..." class="d-block w-100 rounded-3" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="..." class="d-block w-100 rounded-3" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <br></br>
+            <div class="card shadow-lg" style="width: 25rem; height: 26rem;">
+                <div class="card-body">
+                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="10000">
+                                <img src="..." class="d-block w-100 rounded-3" alt="...">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <img src="..." class="d-block w-100 rounded-3" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="..." class="d-block w-100 rounded-3" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,117 +1,33 @@
-<!DOCTYPE html>
+{% extends './sidebar.html' %}
 
-<html lang="en" dir="ltr">
+{% block title %}Usuarios Listados{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Listar Usuarios</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
-
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-{% block body %}
-<div class="sidebar">
-    <div class="logo-details">
-        <i class='bx bx-user'></i>
-        <span class="logo_name">B-PASS C</span>
-    </div>
-    <ul class="nav-links">
-        <li>
-            <a href="/home" class="active">
-                <i class='bx bx-grid-alt'></i>
-                <span class="links_name">Inicio</span>
-            </a>
-        </li>
-        <li>
-            <a href="{{ url_for('listar_usuarios') }}">
-                <i class='bx bx-list-ul'></i>
-                <span class="links_name">Listar Usuarios</span>
-            </a>
-        </li>
-        <li>
-            <a href="{{ url_for('Registrar_usuarios') }}">
-                <i class='bx bx-user'></i>
-                <span class="links_name">Consultar Usuario</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-coin-stack'></i>
-                <span class="links_name">Registrar Usuarios</span>
-            </a>
-        <li>
-            <a href="#">
-                <i class='bx bx-message'></i>
-                <span class="links_name">Solicitudes Radicadas</span>
-            </a>
-        </li>
-        <li class="log_out">
-            <a href="login">
-                <i class='bx bx-log-out'></i>
-                <span class="links_name">Cerrar Sesión</span>
-            </a>
-        </li>
-    </ul>
+{% block content %}
+<br></br>
+<div>
+    <table id="example" class="table table-striped table-bordered shadow-lg" style="width:100%">
+        <thead>
+            <tr class="text-center">
+                <td>ID</td>
+                <td>NOMBRES</td>
+                <td>APELLIDOS</td>
+                <td>EDAD</td>
+                <td>GRADO</td>
+                <td>ROL</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuarios in employee %}
+            <tr class="text-center">
+                <td>{{(usuarios.id)}}</td>
+                <td>{{(usuarios.NOMBRES)}}</td>
+                <td>{{(usuarios.APELLIDOS)}}</td>
+                <td>{{(usuarios.EDAD)}}</td>
+                <td>{{(usuarios.GRADO)}}</td>
+                <td>{{(usuarios.ROL)}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
-<section class="home-section">
-    <nav>
-        <div class="sidebar-button">
-            <i class='bx bx-menu sidebarBtn'></i>
-            <span class="dashboard">Usuarios Listados</span>
-        </div>
-        <div class="search-box">
-            <input type="text" placeholder="Search...">
-            <i class='bx bx-search'></i>
-        </div>
-        <div class="profile-details">
-            <!--<img src="images/profile.jpg" alt="">-->
-            <span class="admin_name">{{ current_user.NOMBRES}}</span>
-            <i class='bx bx-chevron-down'></i>
-            <i class='bx bxs-user'></i>
-        </div>
-    </nav>
-
-    <div>
-        <br>
-        <br>
-        <br>
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
-            <thead>
-                <tr class="text-center">
-                    <td>ID</td>
-                    <td>NOMBRES</td>
-                    <td>APELLIDOS</td>
-                    <td>EDAD</td>
-                    <td>GRADO</td>
-                    <td>ROL</td>
-                </tr>
-            </thead>
-            <tbody>
-                {% for usuarios in employee %}
-                <tr class="text-center">
-                    <td>{{(usuarios.id)}}</td>
-                    <td>{{(usuarios.NOMBRES)}}</td>
-                    <td>{{(usuarios.APELLIDOS)}}</td>
-                    <td>{{(usuarios.EDAD)}}</td>
-                    <td>{{(usuarios.GRADO)}}</td>
-                    <td>{{(usuarios.ROL)}}</td>
-                </tr>
-    </div>
-</section>
-<script>
-    let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".sidebarBtn");
-    sidebarBtn.onclick = function () {
-        sidebar.classList.toggle("active");
-        if (sidebar.classList.contains("active")) {
-            sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-        } else
-            sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-    }
-</script>
-{% endfor %}
-</tbody>
-</table>
 {% endblock %}
