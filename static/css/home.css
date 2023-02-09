@@ -327,7 +327,8 @@ nav .profile-details i {
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: calc(300px + 3em);
+    height: auto;
+    /* calc(300px + 3em) */
 }
 
 .slide-open:checked+.slide-item {
@@ -418,7 +419,7 @@ nav .profile-details i {
 #slide-1:checked~.control-1~.slide-indicador li:nth-child(1) .slide-circulo,
 #slide-2:checked~.control-2~.slide-indicador li:nth-child(2) .slide-circulo,
 #slide-3:checked~.control-3~.slide-indicador li:nth-child(3) .slide-circulo {
-    color: #428bca;
+    color: #12cf97;
 }
 
 #titulo {
