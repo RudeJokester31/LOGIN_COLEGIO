@@ -16,7 +16,7 @@ app = Flask(__name__)
 csrf = CSRFProtect()
 db = MySQL(app)
 login_manager_app = LoginManager(app)
-URL=Config()
+URL = Config()
 
 
 @login_manager_app.user_loader
@@ -101,7 +101,8 @@ def Consultar_usuario(id):
 @login_required
 def Registrar_usuarios():
     try:
-        cursor = db.connection.cursor()
+        if request.method == "POST":
+            cursor = db.connection.cursor()
         sql = """INSERT INTO usuario (id, username, password, NOMBRES, APELLIDOS, EDAD, GRADO, ROL, ID_HUELLA)
         VALUES ('{0}','{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')""".format(request.json['id'], request.json['username'], request.json['password'], request.json['NOMBRES'], request.json['APELLIDOS'], request.json['EDAD'], request.json['GRADO'],
                                                                                         request.json['ROL'], request.json['ID_HUELLA'])
