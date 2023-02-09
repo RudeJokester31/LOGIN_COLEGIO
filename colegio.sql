@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-02-2023 a las 04:27:46
+-- Tiempo de generación: 09-02-2023 a las 00:44:58
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -44,15 +44,15 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `username`, `password`, `NOMBRES`, `APELLIDOS`, `EDAD`, `GRADO`, `ROL`, `ID_HUELLA`) VALUES
-(1, 'jeospino', 'pbkdf2:sha256:260000$JnRokLgK3plT4UOo$8cedfc0f8928beca555c166aaac0d2a96dc140292694c0c951427a0803e4aa61', 'Jesly Paola', 'Ospino Porras', 20, 0, 'ADMINISTRADOR', 1),
-(2, 'mjortiz', 'pbkdf2:sha256:260000$uQr6YyGIiZNGs5vR$e26108f3803f53d3a53c0b9835eef8e7578d9fdb95bcd25f5d2542b8e6370f21', 'MIGUEL JOSE', 'ORTIZ ORTIZ', 13, 6, 'ESTUDIANTE', 2),
-(3, 'magonzalo', 'pbkdf2:sha256:260000$v4dNMUn6woRedD4O$7900a613f6aba1c86264095b9639ab7042c337c37d67acd27a262f7f6a43b047', 'marco', 'GONZALO', 15, 9, 'ESTUDIANTE', 3),
-(4, 'bavillanueva', 'pbkdf2:sha256:260000$iKn0lEwJUtB2Z0pw$b1df6882fdc7f4ea8242c6ad0fd12862b94c8143fe50fd4a4d5e54c1c8670f77', 'Bryan Alfonso', 'VILLANUEVA RIVAS', 18, 11, 'ESTUDIANTE', 4),
-(5, 'elepalza', 'pbkdf2:sha256:260000$AbFKtvMlZ1u6cUdc$c8da4baadcdc3ec86a70e5706d7d7667afd060f0d11ffeff165f1ead8e733dcc', 'EDUARDO LORA', 'EPALZA OSPINO', 16, 10, 'ESTUDIANTE', 5),
-(6, 'jaepalza', '123', 'JHOSTIN ALEXANDER', 'EPALZA MANJARREZ', 20, 0, 'ADMINISTRADOR', 6),
-(7, 'jomarco', NULL, 'JOSE JOSE', 'MARCO FABIAN', 20, 10, 'ESTUDIANTE', 7),
-(8, 'kepalza', NULL, 'KEWIN JESUS', 'EPALZA MANJARREZ', 17, 0, 'EGRESADO', 8),
-(9, 'wemanjarrez', NULL, 'WENDY JOHANA', 'MANJARREZ NOVOA', 41, 0, 'ACUDIENTE', 9);
+(1, 'jeospino', '123', 'Jesly Paola', 'Ospino Porras', 20, 0, 'ADMINISTRADOR', 1),
+(2, 'mjortiz', '123', 'Shelsy Mariani', 'Cruz Yepes', 19, 0, 'ADMINISTRADOR', 2),
+(3, 'magonzalo', '123', 'Valery Patricia', 'Aguilar Sierra', 12, 6, 'ESTUDIANTE', 3),
+(4, 'bavillanueva', '123', 'Bryan Alfonso', 'VILLANUEVA RIVAS', 20, 0, 'ADMINISTRADOR', 4),
+(5, 'elepalza', '123', 'Eduardo Lora', 'Epalza Ospino', 16, 10, 'ESTUDIANTE', 5),
+(6, 'jaepalza', '123', 'Jhostn Alexander', 'Epalza Manjarrez', 20, 0, 'ADMINISTRADOR', 6),
+(7, 'jomarco', '123', 'Jhonny Hilton', 'Epalza Herrera', 49, 0, 'ADMINISTRADOR', 7),
+(8, 'kepalza', '123', 'Kewin Jesus', 'Epalza Manjarrez', 17, 0, 'EGRESADO', 8),
+(9, 'wemanjarrez', '123', 'Wendy Johana', 'Manjarrez Novoa', 41, 0, 'ADMINISTRADOR', 9);
 
 --
 -- Índices para tablas volcadas
