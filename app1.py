@@ -58,6 +58,10 @@ def logout():
 def home():
     return render_template('home.html')
 
+@app.route("/Registrar_Usuario")
+def Registrar_Usuario():
+    return render_template('Registrar_Usuario.html')
+
 
 @app.route("/protected")
 @login_required
@@ -97,20 +101,24 @@ def Consultar_usuario(id):
         return jsonify({"mensaje": "Error", "Exito": False})
 
 
-@app.route("/usuarios", methods=["POST"])
+@app.route("/Registrar_Usuarios", methods=["POST"])
 @login_required
 def Registrar_usuarios():
     try:
         if request.method == "POST":
-            cursor = db.connection.cursor()
+            user = User(request.form['id'], request.form['username'], request.form['password'], request.form['NOMBRES'],
+                        request.form['APELLIDOS'], request.form['EDAD'], request.form['GRADO'], request.form['GRADO'])
+        cursor = db.connection.cursor()
         sql = """INSERT INTO usuario (id, username, password, NOMBRES, APELLIDOS, EDAD, GRADO, ROL, ID_HUELLA)
-        VALUES ('{0}','{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')""".format(request.json['id'], request.json['username'], request.json['password'], request.json['NOMBRES'], request.json['APELLIDOS'], request.json['EDAD'], request.json['GRADO'],
-                                                                                        request.json['ROL'], request.json['ID_HUELLA'])
+        VALUES ('{0}','{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')""".format(request.form['id'], request.form['username'],
+                                                                                        request.form['password'], request.form['NOMBRES'], request.form[
+                                                                                            'APELLIDOS'], request.form['EDAD'], request.form['GRADO'],
+                                                                                        request.form['ROL'], request.form['ID_HUELLA'])
         cursor.execute(sql)
         db.connection.commit()
-        return jsonify({"mensaje": "Usuario registrado", "Exito": True})
+        return jsonify({"mensaje": "Usuario registrado", "Exito": ex})
     except Exception as ex:
-        return jsonify({"mensaje": "Error", "Exito": False})
+        return jsonify({"mensaje": "Error", "Exito": ex})
 
 
 def status_401(error):

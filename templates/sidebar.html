@@ -10,7 +10,7 @@
                     class="d-flex align-items-center pb-1 mb-md-4 me-md-auto text-white text-decoration-none shadow-lg">
                     <img src="{{ url_for('static', filename='img/huellaw.png') }}" alt="hugenerd" width="30" height="30"
                         class="rounded-circle">
-                    <span class="fs-3 d-none d-sm-inline">B-PASS C<div></div></span>
+                    <span class="fs-3 d-none d-sm-inline">B-PASSC<div></div></span>
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start fw-bold"
                     id="menu">
@@ -43,7 +43,7 @@
                             <span class="ms-1 d-none d-sm-inline">Consultar Usuario</span></a>
                     </li>
                     <li>
-                        <a href="{{ url_for('Registrar_usuarios') }}" class="nav-link px-0 align-middle text-white">
+                        <a href="{{ url_for('Registrar_Usuario') }}" class="nav-link px-0 align-middle text-white">
                             <img src="{{ url_for('static', filename='img/reg1.png') }}" alt="hugenerd" width="30"
                                 height="30" class="rounded-circle">
                             <span class="ms-1 d-none d-sm-inline">Registrar Usuarios</span>
@@ -91,7 +91,7 @@
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="{{ url_for('static', filename='img/user1.png') }}" alt="hugenerd" width="30"
                             height="30" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1">{{ current_user.NOMBRES}}</span>
+                        <span class="d-none d-sm-inline mx-1">{{ current_user.NOMBRES }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-success text-small shadow">
                         <!-- <li><a class="dropdown-item" href="#">New project...</a></li>
@@ -110,7 +110,7 @@
                 <div class="container-fluid">
                     <img src="{{ url_for('static', filename='img/dash1.png') }}" alt="hugenerd" width="30" height="30"
                         class="rounded-circle">
-                    <a class="navbar-brand" href="/home">Inicio</a>
+                    <a class="navbar-brand" href="/home">Bienvenido {{ current_user.username }}</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
