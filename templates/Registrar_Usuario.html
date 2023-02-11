@@ -9,47 +9,59 @@
         </div>
         <div class="col-lg-4">
             <br></br>
-            <h1 class="h2 mb-3 fw-bald" style="color: #07b66d;">Registro De Usuarios</h1>
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <div class="form-floating">
-                <input type="number" class="form-control shadow-sm" id="id" name="id" placeholder="id">
-                <label for="id">ID Usuario</label>
+            {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+            <br />
+            {% for message in messages %}
+            <div class="alert alert-success d-flex align-items-center alert-dismissible" role="alert">
+                <strong>{{ message }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
             </div>
-            <div class="form-floating mt-2">
-                <input type="username" class="form-control shadow-sm" name="username" placeholder="username">
-                <label for="username">Nombre De Usuario</label>
-            </div>
-            <div class="form-floating mt-2">
-                <input type="password" class="form-control shadow-sm" name="password" placeholder="password">
-                <label for="password">Contraseña</label>
-            </div>
-            <div class="form-floating mt-2">
-                <input type="text" class="form-control shadow-sm" name="NOMBRES" placeholder="NOMBRES">
-                <label for="NOMBRES">Nombres</label>
-            </div>
-            <div class="form-floating mt-2">
-                <input type="text" class="form-control shadow-sm" name="APELLIDOS" placeholder="APELLIDOS">
-                <label for="APELLIDOS">Apellidos</label>
-            </div>
-            <div class="form-floating mt-2">
-                <input type="number" class="form-control shadow-sm" name="EDAD" placeholder="EDAD">
-                <label for="EDAD">Edad</label>
-            </div>
-            <div class="form-floating mt-2">
-                <input type="number" class="form-control shadow-sm" name="GRADO" placeholder="GRADO">
-                <label for="GRADO">Grado</label>
-            </div>
-            <div class="form-floating mt-2">
-                <input type="text" class="form-control shadow-sm" name="ROL" placeholder="ROL">
-                <label for="ROL">Rol</label>
-            </div>
-            <div class="form-floating mt-3">
-                <input type="number" class="form-control shadow-sm" name="ID_HUELLA" placeholder="ID_HUELLA">
-                <label for="ID_HUELLA">ID_HUELLA</label>
-            </div>
-            <br></br>
-            <button class="w-20 btn btn-lg btn-success mb-2 fw-bald shadow-lg" type="submit"
-                style="color: #ffffff;">Registrar</button>
+            {% endfor %}
+
+            {% endif %}
+
+            {% endwith %}
+            <form action="/Registrar_Usuarios" method="POST">
+                <h1 class="h2 mb-3 fw-bald" style="color: #07b66d;">Registro De Usuarios</h1>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="form-floating mt-2">
+                    <input type="username" class="form-control shadow-sm" name="username" placeholder="username">
+                    <label for="username">Nombre De Usuario</label>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="password" class="form-control shadow-sm" name="password" placeholder="password">
+                    <label for="password">Contraseña</label>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control shadow-sm" name="NOMBRES" placeholder="NOMBRES">
+                    <label for="NOMBRES">Nombres</label>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control shadow-sm" name="APELLIDOS" placeholder="APELLIDOS">
+                    <label for="APELLIDOS">Apellidos</label>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="number" class="form-control shadow-sm" name="EDAD" placeholder="EDAD">
+                    <label for="EDAD">Edad</label>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="number" class="form-control shadow-sm" name="GRADO" placeholder="GRADO">
+                    <label for="GRADO">Grado</label>
+                </div>
+                <div class="form-floating mt-2">
+                    <input type="text" class="form-control shadow-sm" name="ROL" placeholder="ROL">
+                    <label for="ROL">Rol</label>
+                </div>
+                <div class="form-floating mt-3">
+                    <input type="number" class="form-control shadow-sm" name="ID_HUELLA" placeholder="ID_HUELLA">
+                    <label for="ID_HUELLA">ID_HUELLA</label>
+                </div>
+                <br></br>
+                <button class="w-20 btn btn-lg btn-success mb-2 fw-bald shadow-lg" type="submit"
+                    style="color: #ffffff;">Registrar</button>
+            </form>
         </div>
         <div class="row">
             <div class="col-lg-4">
@@ -57,10 +69,9 @@
         </div>
     </div>
 </div>
-    </form>
 
 
 
 
 
-    {% endblock %}
+{% endblock %}

@@ -58,6 +58,7 @@ def logout():
 def home():
     return render_template('home.html')
 
+
 @app.route("/Registrar_Usuario")
 def Registrar_Usuario():
     return render_template('Registrar_Usuario.html')
@@ -106,19 +107,15 @@ def Consultar_usuario(id):
 def Registrar_usuarios():
     try:
         if request.method == "POST":
-            user = User(request.form['id'], request.form['username'], request.form['password'], request.form['NOMBRES'],
-                        request.form['APELLIDOS'], request.form['EDAD'], request.form['GRADO'], request.form['GRADO'])
-        cursor = db.connection.cursor()
-        sql = """INSERT INTO usuario (id, username, password, NOMBRES, APELLIDOS, EDAD, GRADO, ROL, ID_HUELLA)
-        VALUES ('{0}','{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')""".format(request.form['id'], request.form['username'],
-                                                                                        request.form['password'], request.form['NOMBRES'], request.form[
-                                                                                            'APELLIDOS'], request.form['EDAD'], request.form['GRADO'],
-                                                                                        request.form['ROL'], request.form['ID_HUELLA'])
-        cursor.execute(sql)
-        db.connection.commit()
-        return jsonify({"mensaje": "Usuario registrado", "Exito": ex})
+            url = URL.IP+"registrar_Usuario"
+            data = request.form.to_dict()
+            data.pop("csrf_token")
+            datos = requests.post(url, json=data)
+            msj = json.loads(datos.text)
+            flash(msj["mensaje"])
+        return render_template("Registrar_Usuario.html")
     except Exception as ex:
-        return jsonify({"mensaje": "Error", "Exito": ex})
+        return jsonify({"mensaje": ex, "Exito": False})
 
 
 def status_401(error):

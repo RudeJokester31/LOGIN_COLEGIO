@@ -9,10 +9,3 @@ class User(UserMixin):
         self.username = username
         self.password = password
         self.NOMBRES = NOMBRES
-
-    @classmethod
-    def check_password(self, hashed_password, password):
-        return check_password_hash(hashed_password, password)
-
-
-print(generate_password_hash("Jhostin2"))
