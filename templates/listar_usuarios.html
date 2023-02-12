@@ -4,10 +4,10 @@
 
 {% block content %}
 <br></br>
-<div>
-    <table id="example" class="table table-striped table-bordered shadow-lg" style="width:100%">
+<div class="table-responsive-sm">
+    <table id="example" class="table table-bordered table-striped " style="width:100%">
         <thead>
-            <tr class="text-center">
+            <tr class="text-center fw-bold bg-success">
                 <td>ID</td>
                 <td>NOMBRES</td>
                 <td>APELLIDOS</td>
@@ -19,12 +19,14 @@
         <tbody>
             {% for usuarios in employee %}
             <tr class="text-center">
-                <td>{{(usuarios.id)}}</td>
+                <td class="fw-bold">{{(usuarios.id)}}</td>
                 <td>{{(usuarios.NOMBRES)}}</td>
                 <td>{{(usuarios.APELLIDOS)}}</td>
                 <td>{{(usuarios.EDAD)}}</td>
                 <td>{{(usuarios.GRADO)}}</td>
-                <td>{{(usuarios.ROL)}}</td>
+                <td>
+                    <span class="badge rounded-pill bg-warning" style="color: black;">{{(usuarios.ROL)}}</span>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

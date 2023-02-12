@@ -1,13 +1,13 @@
 {% extends './base.html' %}
 
 {% block body %}
-<div class="container-fluid">
+<div class="container-fluid static " width="100%">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-success shadow">
             <div
                 class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 fw-bold">
                 <a href="/home"
-                    class="d-flex align-items-center pb-1 mb-md-4 me-md-auto text-white text-decoration-none shadow-lg">
+                    class="d-flex align-items-center pb-1 mb-md-4 me-md-auto text-white text-decoration-none shadow-lg float-sm-left">
                     <img src="{{ url_for('static', filename='img/huellaw.png') }}" alt="hugenerd" width="30" height="30"
                         class="rounded-circle">
                     <span class="fs-3 d-none d-sm-inline">B-PASSC<div></div></span>
@@ -86,7 +86,7 @@
                     </li>
                 </ul>
                 <hr>
-                <div class="dropdown pb-4">
+                <div class="dropdown pb-4 float-sm-left">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="{{ url_for('static', filename='img/user1.png') }}" alt="hugenerd" width="30"
