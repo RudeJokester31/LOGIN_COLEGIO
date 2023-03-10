@@ -1,6 +1,8 @@
 class Config:
     SECRET_KEY = "!Bertulio123"
     IP="http://127.0.0.1:5000/"
+    IP1="http://127.0.0.1:9036/"
+
 
 
 class DevelopmentConfig(Config):

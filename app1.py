@@ -54,9 +54,36 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/home")
+@app.route("/home", methods=["GET"])
 def home():
-    return render_template('home.html')
+    try: 
+        url = URL.IP1+"ingresos"
+        url1 =URL.IP1+"total_estudiantes"
+        url2 =URL.IP1+"inasistencia"
+        url3 =URL.IP1+"promedio"
+        datos = requests.get(url)
+        datos1 = requests.get(url1)
+        datos2 = requests.get(url2)
+        datos3 = requests.get(url3)
+        data = datos.text
+        data1 = datos1.text
+        data2 = datos2.text
+        data3 = datos3.text
+        data = json.loads(data)
+        data1 = json.loads(data1)
+        data2 = json.loads(data2)
+        data3 = json.loads(data3)
+        print(data)
+        print(data1)
+        print(data2)
+        print(data3)
+        return render_template('home.html', count=data, count1=data1, count2=data2, count3=data3)
+    except Exception as ex:
+        return jsonify({"mensaje": "Error", "Exito": ex})
+
+@app.route("/estadisticas", methods=["GET"])
+def estadisticas():
+    return render_template("estadisticas.html")
 
 
 @app.route("/Registrar_Usuario")
