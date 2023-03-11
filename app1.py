@@ -55,6 +55,7 @@ def logout():
 
 
 @app.route("/home", methods=["GET"])
+@login_required
 def home():
     try: 
         url = URL.IP1+"ingresos"
@@ -81,9 +82,25 @@ def home():
     except Exception as ex:
         return jsonify({"mensaje": "Error", "Exito": ex})
 
+
+
+@app.route("/estadistica")
+def estadistica():
+    return render_template("estadistica.html")
+
 @app.route("/estadisticas", methods=["GET"])
-def estadisticas():
-    return render_template("estadisticas.html")
+@login_required
+def Estadisticas():
+    try:
+        url = URL.IP1+"estadisticas"
+        datos = requests.get(url)
+        resultado = datos.text
+        resultado = json.loads(resultado)
+        print (resultado)
+        return render_template('estadistica.html', ingresos=resultado)
+    except Exception as ex:
+        return jsonify({"mensaje": "Error", "Exito": ex}) 
+
 
 
 @app.route("/Registrar_Usuario")

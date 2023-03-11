@@ -1,0 +1,28 @@
+{% extends './sidebar.html' %}
+
+{% block title %}Estadisticas{% endblock %}
+
+{% block content %}
+<br></br>
+<div class="table-responsive-sm">
+    <table id="example1" class="table table-bordered table-striped " style="width:100%">
+        <thead>
+            <tr class="text-center fw-bold bg-success">
+                <td>FECHA</td>
+                <td>TOTAL_INGRESOS</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data5 in ingresos %}
+            <tr class="text-center">
+                <td class="fw-bold">{{(data5.FECHA)}}</td>
+                <td>{{(data5.TOTAL_INGRESOS)}}</td>
+                <td>
+                    <span class="badge rounded-pill bg-warning" style="color: black;">{{(usuarios.ROL)}}</span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
