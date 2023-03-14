@@ -1,0 +1,27 @@
+{% extends './sidebar.html' %}
+
+{% block title %}Usuarios Listados{% endblock %}
+
+{% block content %}
+<br></br>
+<div class="table-responsive-sm">
+    <table id="example2" class="table table-bordered table-striped " style="width:100%">
+        <thead>
+            <tr class="text-center fw-bold bg-success">
+                <td>ID_USUARIO</td>
+                <td>FECHA</td>
+                <td>ESTADO</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ingresos in listar %}
+            <tr class="text-center">
+                <td class="fw-bold">{{(ingresos.ID_USUARIO)}}</td>
+                <td>{{(ingresos.FECHA)}}</td>
+                <td>{{(ingresos.ESTADO)}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

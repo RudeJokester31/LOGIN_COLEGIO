@@ -83,14 +83,13 @@ def home():
         return jsonify({"mensaje": "Error", "Exito": ex})
 
 
-
-@app.route("/estadistica")
-def estadistica():
-    return render_template("estadistica.html")
+# @app.route("/estadistica")
+# def estadistica():
+#     return render_template("estadistica.html")
 
 @app.route("/estadisticas", methods=["GET"])
 @login_required
-def Estadisticas():
+def estadisticas_ingreso():
     try:
         url = URL.IP1+"estadisticas"
         datos = requests.get(url)
@@ -101,18 +100,10 @@ def Estadisticas():
     except Exception as ex:
         return jsonify({"mensaje": "Error", "Exito": ex}) 
 
-
-
-@app.route("/Registrar_Usuario")
-def Registrar_Usuario():
-    return render_template('Registrar_Usuario.html')
-
-
-@app.route("/protected")
-@login_required
-def protected():
-    return "<h1>Esta es una vista protegida, solo para usuarios autenticados</h1>"
-
+# @app.route("/protected")
+# @login_required
+# def protected():
+#     return "<h1>Esta es una vista protegida, solo para usuarios autenticados</h1>"
 
 @app.route("/usuarios", methods=['GET'])
 @login_required
@@ -124,6 +115,20 @@ def listar_usuarios():
         usuarios = json.loads(usuarios)
         print(usuarios)
         return render_template('listar_usuarios.html', employee=usuarios)
+    except Exception as ex:
+        return jsonify({"mensaje": "Error", "Exito": ex})
+
+
+@app.route("/ingresos", methods=['GET'])
+@login_required
+def listar_ingresos():
+    try:
+        url = URL.IP+"ingresos"
+        datos = requests.get(url)
+        ingresos = datos.text
+        ingresos = json.loads(ingresos)
+        print(ingresos)
+        return render_template('listar_ingresos.html', listar=ingresos)
     except Exception as ex:
         return jsonify({"mensaje": "Error", "Exito": ex})
 
@@ -144,6 +149,13 @@ def Consultar_usuario(id):
             return jsonify({"mensaje": "Usuario no encontrado", "Exito": True})
     except Exception as ex:
         return jsonify({"mensaje": "Error", "Exito": False})
+
+
+
+@app.route("/Registrar_Usuario")
+def Registrar_Usuario():
+    return render_template('Registrar_Usuario.html')
+
 
 
 @app.route("/Registrar_Usuarios", methods=["POST"])

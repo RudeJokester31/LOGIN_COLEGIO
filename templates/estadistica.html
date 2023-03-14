@@ -9,16 +9,15 @@
         <thead>
             <tr class="text-center fw-bold bg-success">
                 <td>FECHA</td>
-                <td>TOTAL_INGRESOS</td>
+                <td>TOTAL INGRESOS</td>
             </tr>
         </thead>
         <tbody>
-            {% for data5 in ingresos %}
+            {% for resultado in ingresos %}
             <tr class="text-center">
-                <td class="fw-bold">{{(data5.FECHA)}}</td>
-                <td>{{(data5.TOTAL_INGRESOS)}}</td>
+                <td class="fw-bold">{{(resultado.fecha)}}</td>
                 <td>
-                    <span class="badge rounded-pill bg-warning" style="color: black;">{{(usuarios.ROL)}}</span>
+                    <span class="badge rounded-pill bg-warning" style="color: black;">{{(resultado.total_ingresos)}}</span>
                 </td>
             </tr>
             {% endfor %}
