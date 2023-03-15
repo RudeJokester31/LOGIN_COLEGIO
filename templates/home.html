@@ -10,7 +10,7 @@
             <div class="card shadow-lg" style="width: 18rem;">
                 <div class="card-body">
                     <h3 class="card-title fw-bold">Asistencia Hoy</h3>
-                    <h4 class="card-text fw-bold">{{ count }}</h4>
+                    <h4 class="card-text fw-bold">{{ count.ingresos }}</h4>
                     <a href="#" class="btn btn-outline-success disabled">
                         <img src="{{ url_for('static', filename='img/icon2.png') }}" alt="hugenerd" width="30"
                             height="30" class="rounded-circle"> Actualizado</a>
@@ -21,7 +21,7 @@
             <div class="card shadow-lg" style="width: 18rem;">
                 <div class="card-body">
                     <h3 class="card-title fw-bold">Inasistencia Hoy</h3>
-                    <h4 class="card-text fw-bold">{{ count2 }}</h4>
+                    <h4 class="card-text fw-bold">{{ count2.inasistencias }}</h4>
                     <a href="#" class="btn btn-outline-success disabled">
                         <img src="{{ url_for('static', filename='img/icon4.png') }}" alt="hugenerd" width="30"
                             height="30" class="rounded-circle"> Actualizado</a>
@@ -55,6 +55,35 @@
             <div class="card shadow-lg" style="width: 50rem; height: 26rem;">
                 <div class="card-body">
                     <div>
+                        <canvas id="bar" width="900" height="400"></canvas>
+                        <script>
+                            var ctx = document.getElementById("bar").getContext("2d");
+                            var datosGrafico = {{ ingresosGra | tojson  }};
+                            console.log(datosGrafico);
+                            var bar = new Chart(ctx, {
+                                type: "bar",
+                                data: {
+                                    labels: [datosGrafico[0]["fecha"], datosGrafico[1]["fecha"], datosGrafico[2]["fecha"], datosGrafico[3]["fecha"], datosGrafico[4]["fecha"]],
+                                    datasets: [
+                                        {
+                                            label: "Asistencias",
+                                            data: [datosGrafico[0]["cantidad"], datosGrafico[1]["cantidad"], datosGrafico[2]["cantidad"], datosGrafico[3]["cantidad"], datosGrafico[4]["cantidad"]],
+                                            fill: false,
+                                            backgroundColor: ['rgba(75, 192, 192, 0.2)'],
+                                            borderColor: ['rgb(75, 192, 192)'],
+                                            borderWidth: 1
+                                        },
+                                    ],
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true,
+                                        },
+                                    },
+                                },
+                            })
+                        </script>
                     </div>
                 </div>
             </div>

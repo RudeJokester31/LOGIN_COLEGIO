@@ -24,6 +24,7 @@
 
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     {% block customCSS %}
     {% endblock %}
     <style>
@@ -79,7 +80,7 @@
             );
         });
     </script>
-        <script>$(document).ready(function () {
+    <script>$(document).ready(function () {
             $('#example1').DataTable({
                 "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
                 "iDisplayLength": 10,
@@ -90,7 +91,7 @@
             );
         });
     </script>
-        <script>$(document).ready(function () {
+    <script>$(document).ready(function () {
             $('#example2').DataTable({
                 "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
                 "iDisplayLength": 10,
@@ -102,16 +103,16 @@
         });
     </script>
     <script>$(document).ready(function () {
-        $('#').DataTable({
-            "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
-            "iDisplayLength": 3,
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            $('#').DataTable({
+                "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+                "iDisplayLength": 3,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
             }
-        }
-        );
-    });
-</script>
+            );
+        });
+    </script>
 </body>
 
 </html>
