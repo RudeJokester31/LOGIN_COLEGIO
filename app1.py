@@ -59,26 +59,31 @@ def logout():
 def home():
     try: 
         url = URL.IP1+"ingresos"
-        url1 =URL.IP1+"total_estudiantes"
-        url2 =URL.IP1+"inasistencia"
-        url3 =URL.IP1+"promedio"
+        url1 = URL.IP1+"total_estudiantes"
+        url2 = URL.IP1+"inasistencia"
+        url3 = URL.IP1+"promedio"
+        url4 = URL.IP1+"l_ingresos"
         datos = requests.get(url)
         datos1 = requests.get(url1)
         datos2 = requests.get(url2)
         datos3 = requests.get(url3)
+        ingresos = requests.get(url4)
         data = datos.text
         data1 = datos1.text
         data2 = datos2.text
         data3 = datos3.text
+        ingresos = ingresos.text
         data = json.loads(data)
         data1 = json.loads(data1)
         data2 = json.loads(data2)
         data3 = json.loads(data3)
+        ingresos = json.loads(ingresos)
         print(data)
         print(data1)
         print(data2)
         print(data3)
-        return render_template('home.html', count=data, count1=data1, count2=data2, count3=data3)
+        print(ingresos)
+        return render_template('home.html', count=data, count1=data1, count2=data2, count3=data3, listar=ingresos)
     except Exception as ex:
         return jsonify({"mensaje": "Error", "Exito": ex})
 
@@ -119,11 +124,11 @@ def listar_usuarios():
         return jsonify({"mensaje": "Error", "Exito": ex})
 
 
-@app.route("/ingresos", methods=['GET'])
+@app.route("/l_ingresos", methods=['GET'])
 @login_required
 def listar_ingresos():
     try:
-        url = URL.IP+"ingresos"
+        url = URL.IP1+"l_ingresos"
         datos = requests.get(url)
         ingresos = datos.text
         ingresos = json.loads(ingresos)
