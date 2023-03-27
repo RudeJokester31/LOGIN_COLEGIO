@@ -52,9 +52,19 @@
     <meta name="theme-color" content="#7952b3">
     <!-- Custom styles for this template -->
     <link href="sidebars.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script> -->
 </head>
 
 <body class="text-center">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
     {% block body %}
     {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
@@ -69,16 +79,21 @@
         src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-    <script>$(document).ready(function () {
-            $('#example').DataTable({
-                "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
-                "iDisplayLength": 10,
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-                }
+    <script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            // dom: 'Bfrtip',
+            // buttons: [
+            //     'excelHtml5',
+            //     'pdfHtml5'
+            // ],
+            "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+            "iDisplayLength": 10,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
             }
-            );
         });
+    });
     </script>
     <script>$(document).ready(function () {
             $('#example1').DataTable({
@@ -111,6 +126,15 @@
                 }
             }
             );
+        });
+    </script>
+    <script>
+        const exportBtn = document.querySelector('#export-btn');
+        const table = document.querySelector('#example');
+    
+        exportBtn.addEventListener('click', () => {
+            const wb = XLSX.utils.table_to_book(table);
+            XLSX.writeFile(wb, 'Usuarios.xlsx');
         });
     </script>
 </body>
