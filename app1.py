@@ -82,20 +82,9 @@ def home():
         data3 = json.loads(data3)
         ingresos = json.loads(ingresos)
         estadisticasGraficos = json.loads(estadisticasGraficos)
-        print(data)
-        print(data1)
-        print(data2)
-        print(data3)
-        # print(ingresos)
-        print(estadisticasGraficos)
         return render_template('home.html', count=data, count1=data1, count2=data2, count3=data3, listar=ingresos, ingresosGra=estadisticasGraficos)
     except Exception as ex:
         return jsonify({"mensaje": "Error", "Exito": ex})
-
-
-# @app.route("/estadistica")
-# def estadistica():
-#     return render_template("estadistica.html")
 
 @app.route("/estadisticas", methods=["GET"])
 @login_required
@@ -105,16 +94,9 @@ def estadisticas_ingreso():
         datos = requests.get(url)
         resultado = datos.text
         resultado = json.loads(resultado)
-        print(resultado)
         return render_template('estadistica.html', ingresos=resultado)
     except Exception as ex:
         return jsonify({"mensaje": "Error", "Exito": ex})
-
-# @app.route("/protected")
-# @login_required
-# def protected():
-#     return "<h1>Esta es una vista protegida, solo para usuarios autenticados</h1>"
-
 
 @app.route("/usuarios", methods=['GET'])
 @login_required
@@ -124,7 +106,6 @@ def listar_usuarios():
         datos = requests.get(url)
         usuarios = datos.text
         usuarios = json.loads(usuarios)
-        print(usuarios)
         return render_template('listar_usuarios.html', employee=usuarios)
     except Exception as ex:
         return jsonify({"mensaje": "Error", "Exito": ex})
@@ -138,7 +119,6 @@ def listar_ingresos():
         datos = requests.get(url)
         ingresos = datos.text
         ingresos = json.loads(ingresos)
-        print(ingresos)
         return render_template('listar_ingresos.html', listar=ingresos)
     except Exception as ex:
         return jsonify({"mensaje": "Error", "Exito": ex})

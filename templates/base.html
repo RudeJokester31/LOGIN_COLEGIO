@@ -65,6 +65,7 @@
 
 <body class="text-center">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     {% block body %}
     {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
@@ -80,20 +81,15 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <script>
-    $(document).ready(function () {
-        $('#example').DataTable({
-            // dom: 'Bfrtip',
-            // buttons: [
-            //     'excelHtml5',
-            //     'pdfHtml5'
-            // ],
-            "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
-            "iDisplayLength": 10,
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-            }
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+                "iDisplayLength": 10,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            });
         });
-    });
     </script>
     <script>$(document).ready(function () {
             $('#example1').DataTable({
@@ -117,24 +113,28 @@
             );
         });
     </script>
-    <script>$(document).ready(function () {
-            $('#').DataTable({
-                "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
-                "iDisplayLength": 3,
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-                }
-            }
-            );
-        });
-    </script>
     <script>
         const exportBtn = document.querySelector('#export-btn');
         const table = document.querySelector('#example');
-    
         exportBtn.addEventListener('click', () => {
             const wb = XLSX.utils.table_to_book(table);
             XLSX.writeFile(wb, 'Usuarios.xlsx');
+        });
+    </script>
+    <script>
+        const exportBtn1 = document.querySelector('#export-btn1');
+        const table1 = document.querySelector('#example1');
+        exportBtn1.addEventListener('click', () => {
+            const wb = XLSX.utils.table_to_book(table1);
+            XLSX.writeFile(wb, 'Estadistica.xlsx');
+        });
+    </script>
+    <script>
+        const exportBtn2 = document.querySelector('#export-btn2');
+        const table2 = document.querySelector('#example2');
+        exportBtn2.addEventListener('click', () => {
+            const wb = XLSX.utils.table_to_book(table2);
+            XLSX.writeFile(wb, 'Ingresos.xlsx');
         });
     </script>
 </body>
