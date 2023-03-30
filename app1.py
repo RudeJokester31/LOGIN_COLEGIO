@@ -123,13 +123,11 @@ def listar_ingresos():
     except Exception as ex:
         return jsonify({"mensaje": "Error", "Exito": ex})
 
-@app.router("ingreso_unUsuario")
-def ingreso_unUsuario():
-    return render_template('ingresos_unUsuario.html')
 
 
-@app.route("/ingresos_unUsuario", methods=['POST'])
-# @login_required
+
+@app.route("/ingresos_unUsuario", methods=['POST', 'GET'])
+@login_required
 def ingresos_unUsuario():
     try:
         if request.method == 'POST':

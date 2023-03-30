@@ -20,38 +20,52 @@
             </form>
         </div>
         <div class="row">
+            {% for usuarios in employee %}
             <div class="table-responsive-sm">
-                <table id="example4" class="table table-bordered table-striped " style="width:100%">
-                    <thead>
-                        <td class="text-center fw-bold bg-success">
-                        USUARIO
-                        </td>
-                        <tbody>
-                            <td>NOMBRE APELLIDO</td>
-                        </tbody>
-                    </thead>
-                    <tbody>
-                        {% for usuarios in employee %}
-                        <tr class="text-center">
-                            <td class="fw-bold"></td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>5</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                    <thead>
-                        <td>TOTAL</td>
-                        <tbody>
-                            <td>100</td>
-                        </tbody>
-                    </thead>
-                </table>
-            </div>
-            <button id="export-btn4" class="w-10 btn btn-lg btn-success mb-2 fw-bald shadow-lg"
+                <div class="table-responsive-sm">
+                    <table id="example4" class="table table-bordered table-striped " style="width:100%">
+                        <table id="1" class="table table-bordered table-striped " style="width:100%">
+                            <thead>
+                                <tr class="text-center fw-bold bg-success">
+                                    <td>USUARIO</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <td class="fw-bold">{{(usuarios.id)}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="2" class="table table-bordered table-striped " style="width:100%">
+                            <thead>
+                                <tr class="text-center fw-bold bg-success">
+                                    <td>USUARIO</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <td class="fw-bold">{{(usuarios.id)}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table id="3" class="table table-bordered table-striped " style="width:100%">
+                            <thead>
+                                <tr class="text-center fw-bold bg-success">
+                                    <td>USUARIO</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center">
+                                    <td class="fw-bold">{{(usuarios.id)}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </table>
+                </div>
+                <button id="export-btn" class="w-10 btn btn-lg btn-success mb-2 fw-bald shadow-lg"
                 data-bs-dismiss="btn-success" aria-label="btn-success">Excel</button>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
