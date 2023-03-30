@@ -123,23 +123,24 @@ def listar_ingresos():
     except Exception as ex:
         return jsonify({"mensaje": "Error", "Exito": ex})
 
+@app.router("ingreso_unUsuario")
+def ingreso_unUsuario():
+    return render_template('ingresos_unUsuario.html')
 
-@app.route("/usuario/<id>", methods=['GET'])
-@login_required
-def Consultar_usuario(id):
+
+@app.route("/ingresos_unUsuario", methods=['POST'])
+# @login_required
+def ingresos_unUsuario():
     try:
-        cursor = db.connection.cursor()
-        sql = "SELECT * FROM usuario WHERE id='{0}'".format(id)
-        cursor.execute(sql)
-        datos = cursor.fetchone()
-        if datos != None:
-            usuario = {"id": datos[0], "username": datos[1], "password": datos[2], "NOMBRES": datos[3],
-                       "APELLIDOS": datos[4], "EDAD": datos[5], "GRADO": datos[6], "ROL": datos[7], "ID_HUELLA": datos[8]}
-            return jsonify({"Usuario": usuario, "mensaje": "Usuario encontrado"})
-        else:
-            return jsonify({"mensaje": "Usuario no encontrado", "Exito": True})
+        if request.method == 'POST':
+            url = URL.IP+"ingresos_unUsuario"
+            usuario = request.form.to_dict(["id_usuario"])
+            usuario.pop("csrf_token")
+            datos = requests.post(url, json=usuario)
+            ingresos = json.loads(datos.text)
+            return render_template('ingresos_unUsuario.html', ingresos=ingresos)
     except Exception as ex:
-        return jsonify({"mensaje": "Error", "Exito": False})
+        return jsonify({"mensaje": "Error", "Exito": ex})
 
 
 @app.route("/Registrar_Usuario")

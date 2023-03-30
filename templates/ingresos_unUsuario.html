@@ -1,0 +1,64 @@
+{% extends './sidebar.html' %}
+
+{% block title %}Ingresos Individuales{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4">
+            <form action="/Registrar_Usuarios" method="POST">
+                <h1 class="h2 mb-3 fw-bald" style="color: #07b66d;">Consulta de Ingresos</h1>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="form-floating mt-2">
+                    <input type="id_usuario" class="form-control shadow-sm" name="id_usuario" placeholder="ID USUARIO">
+                    <label for="id_usuario">id_usuario</label>
+                </div>
+                <button class="w-20 btn btn-lg btn-success mb-2 fw-bald shadow-lg" type="submit"
+                    style="color: #ffffff;">Consultar</button>
+            </form>
+        </div>
+        <div class="row">
+            <div class="table-responsive-sm">
+                <table id="example4" class="table table-bordered table-striped " style="width:100%">
+                    <thead>
+                        <td class="text-center fw-bold bg-success">
+                        USUARIO
+                        </td>
+                        <tbody>
+                            <td>NOMBRE APELLIDO</td>
+                        </tbody>
+                    </thead>
+                    <tbody>
+                        {% for usuarios in employee %}
+                        <tr class="text-center">
+                            <td class="fw-bold"></td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>5</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <thead>
+                        <td>TOTAL</td>
+                        <tbody>
+                            <td>100</td>
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+            <button id="export-btn4" class="w-10 btn btn-lg btn-success mb-2 fw-bald shadow-lg"
+                data-bs-dismiss="btn-success" aria-label="btn-success">Excel</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}
