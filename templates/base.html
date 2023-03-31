@@ -113,6 +113,17 @@
             );
         });
     </script>
+        <script>$(document).ready(function () {
+            $('#example3').DataTable({
+                "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+                "iDisplayLength": 10,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            }
+            );
+        });
+    </script>
     <script>
         const exportBtn = document.querySelector('#export-btn');
         const table = document.querySelector('#example');
@@ -137,6 +148,14 @@
             XLSX.writeFile(wb, 'Ingresos.xlsx');
         });
     </script>
+        <script>
+            const exportBtn3 = document.querySelector('#export-btn3');
+            const table3 = document.querySelector('#example3');
+            exportBtn3.addEventListener('click', () => {
+                const wb = XLSX.utils.table_to_book(table3);
+                XLSX.writeFile(wb, 'Ingresos_Por_Usuario.xlsx');
+            });
+        </script>
 </body>
 
 </html>

@@ -15,6 +15,7 @@
                     <input type="id_usuario" class="form-control shadow-sm" name="id_usuario" placeholder="ID USUARIO">
                     <label for="id_usuario">id_usuario</label>
                 </div>
+                <br>
                 <button class="w-20 btn btn-lg btn-success mb-2 fw-bald shadow-lg" type="submit"
                     style="color: #ffffff;">Consultar</button>
             </form>
@@ -26,7 +27,7 @@
             {% if listar %}
             <div class="table-responsive-sm">
                 <div class="table-responsive-sm">
-                    <table id="1" class="table table-bordered table-striped " style="width:100%">
+                    <table id="example3" class="table table-bordered table-striped " style="width:100%">
                         <thead>
                             <tr>
                                 <td class="text-center fw-bold bg-success">ID</td>
@@ -42,14 +43,16 @@
                                 <td class="fw-bold">{{(ingreso['id'])}}</td>
                                 <td class="fw-bold">{{(ingreso['nombre'])}}</td>
                                 <td class="fw-bold">{{(ingreso['apellido'])}}</td>
-                                <td class="fw-bold">{{(ingreso['tipo'])}}</td>
+                                <td class="fw-bold">
+                                    <span class="badge rounded-pill bg-warning" style="color: black;">{{(ingreso['tipo'])}}</span>
+                                </td>
                                 <td class="fw-bold">{{(ingreso['fecha'])}}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
-                <button id="export-btn" class="w-10 btn btn-lg btn-success mb-2 fw-bald shadow-lg"
+                <button id="export-btn3" class="w-10 btn btn-lg btn-success mb-2 fw-bald shadow-lg"
                 data-bs-dismiss="btn-success" aria-label="btn-success">Excel</button>
             </div>
             {% endif %}
