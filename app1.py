@@ -86,6 +86,7 @@ def home():
     except Exception as ex:
         return jsonify({"mensaje": "Error", "Exito": ex})
 
+
 @app.route("/estadisticas", methods=["GET"])
 @login_required
 def estadisticas_ingreso():
@@ -97,6 +98,7 @@ def estadisticas_ingreso():
         return render_template('estadistica.html', ingresos=resultado)
     except Exception as ex:
         return jsonify({"mensaje": "Error", "Exito": ex})
+
 
 @app.route("/usuarios", methods=['GET'])
 @login_required
@@ -124,19 +126,31 @@ def listar_ingresos():
         return jsonify({"mensaje": "Error", "Exito": ex})
 
 
-
-
-@app.route("/ingresos_unUsuario", methods=['POST', 'GET'])
+@app.route("/ingresos_unUsuario", methods=["GET", "POST"])
 @login_required
 def ingresos_unUsuario():
+    if request.method == "POST":
+        url = URL.IP+"ingresos_unUsuario"
+        data = request.form.to_dict()
+        data.pop("csrf_token")
+        print(data)
+        datos = requests.post(url, json=data)
+        ingresos = datos.text
+        ingresos = json.loads(ingresos)
+        print(ingresos)
+        print(len(ingresos))
+        return render_template('ingresos_unUsuario.html', listar=ingresos)
+    else:
+        return render_template('ingresos_unUsuario.html')
+
+
+def un_UnUsuario():
     try:
-        if request.method == 'POST':
-            url = URL.IP+"ingresos_unUsuario"
-            usuario = request.form.to_dict(["id_usuario"])
-            usuario.pop("csrf_token")
-            datos = requests.post(url, json=usuario)
-            ingresos = json.loads(datos.text)
-            return render_template('ingresos_unUsuario.html', ingresos=ingresos)
+        url = URL.IP+"l_ingresos"
+        datos = requests.get(url)
+        ingresos = datos.text
+        ingresos = json.loads(ingresos)
+        return render_template('listar_ingresos.html', listar=ingresos)
     except Exception as ex:
         return jsonify({"mensaje": "Error", "Exito": ex})
 
