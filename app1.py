@@ -133,26 +133,27 @@ def ingresos_unUsuario():
         url = URL.IP+"ingresos_unUsuario"
         data = request.form.to_dict()
         data.pop("csrf_token")
-        print(data)
         datos = requests.post(url, json=data)
         ingresos = datos.text
         ingresos = json.loads(ingresos)
-        print(ingresos)
-        print(len(ingresos))
         return render_template('ingresos_unUsuario.html', listar=ingresos)
     else:
         return render_template('ingresos_unUsuario.html')
 
 
-def un_UnUsuario():
-    try:
-        url = URL.IP+"l_ingresos"
-        datos = requests.get(url)
-        ingresos = datos.text
-        ingresos = json.loads(ingresos)
-        return render_template('listar_ingresos.html', listar=ingresos)
-    except Exception as ex:
-        return jsonify({"mensaje": "Error", "Exito": ex})
+@app.route("/Inasistencia_Detallada", methods=["GET", "POST"])
+@login_required
+def Inasistencia_Detallada():
+    if request.method == "POST":
+        url = URL.IP+"Inasistencia_Detallada"
+        data = request.form.to_dict()
+        data.pop("csrf_token")
+        datos = requests.post(url, json=data)
+        Inasistencia_Detallada = datos.text
+        detalles = json.loads(Inasistencia_Detallada)
+        return render_template('Inasistencia_Detallada.html', Inasistencia=detalles)
+    else:
+        return render_template('Inasistencia_Detallada.html')
 
 
 @app.route("/Registrar_Usuario")

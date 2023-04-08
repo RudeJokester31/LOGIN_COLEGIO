@@ -1,0 +1,60 @@
+{% extends './sidebar.html' %}
+
+{% block title %}Inasistencia por Fecha{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4">
+            <form action="/Inasistencia_Detallada" method="POST">
+                <h1 class="h2 mb-3 fw-bald" style="color: #07b66d;">Consulta de Inasistencias</h1>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <div class="form-floating mt-2">
+                    <input type="date" value="y-m-d" class="form-control shadow-sm" name="fecha" placeholder="fecha">
+                    <label for="fecha">Día-Mes-Año</label>
+                    <!-- <h3 class="h2 mb-3 fw-bald" style="color: #07b66d;">Ingrese la fecha en formato Año-Mes-Día</h3> -->                  
+                </div>
+                <br>
+                <button class="w-20 btn btn-lg btn-success mb-2 fw-bald shadow-lg" type="submit"
+                    style="color: #ffffff;">Consultar</button>
+            </form>
+        </div>
+        <div class="row">
+            {% if Inasistencia %}
+            <div class="table-responsive-sm">
+                <div class="table-responsive-sm">
+                    <table id="example4" class="table table-bordered table-striped " style="width:100%">
+                        <thead>
+                            <tr>
+                                <td class="text-center fw-bold bg-success">ID</td>
+                                <td class="text-center fw-bold bg-success">Nombres</td>
+                                <td class="text-center fw-bold bg-success">Apellidos</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for detalles in Inasistencia.values() %}
+                            <tr>
+                                <td class="fw-bold">{{(detalles['id'])}}</td>
+                                <td class="fw-bold">{{(detalles['nombre'])}}</td>
+                                <td class="fw-bold">{{(detalles['apellido'])}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <button id="export-btn4" class="w-10 btn btn-lg btn-success mb-2 fw-bald shadow-lg"
+                data-bs-dismiss="btn-success" aria-label="btn-success">Excel</button>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}
