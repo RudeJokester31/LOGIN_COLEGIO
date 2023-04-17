@@ -8,6 +8,20 @@
         <div class="col-lg-4">
         </div>
         <div class="col-lg-4">
+            {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+            <br />
+            {% for message in messages %}
+            <div class="alert alert-success d-flex align-items-center alert-dismissible" role="alert">
+                <strong>{{ message }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+            </div>
+            {% endfor %}
+
+            {% endif %}
+
+            {% endwith %}
             <form action="/ingresos_unUsuario" method="POST">
                 <h1 class="h2 mb-3 fw-bald" style="color: #07b66d;">Consulta de Ingresos</h1>
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -44,7 +58,8 @@
                                 <td class="fw-bold">{{(ingreso['nombre'])}}</td>
                                 <td class="fw-bold">{{(ingreso['apellido'])}}</td>
                                 <td class="fw-bold">
-                                    <span class="badge rounded-pill bg-warning" style="color: black;">{{(ingreso['tipo'])}}</span>
+                                    <span class="badge rounded-pill bg-warning"
+                                        style="color: black;">{{(ingreso['tipo'])}}</span>
                                 </td>
                                 <td class="fw-bold">{{(ingreso['fecha'])}}</td>
                             </tr>
@@ -53,7 +68,7 @@
                     </table>
                 </div>
                 <button id="export-btn3" class="w-10 btn btn-lg btn-success mb-2 fw-bald shadow-lg"
-                data-bs-dismiss="btn-success" aria-label="btn-success">Excel</button>
+                    data-bs-dismiss="btn-success" aria-label="btn-success">Excel</button>
             </div>
             {% endif %}
         </div>
