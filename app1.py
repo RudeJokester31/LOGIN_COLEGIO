@@ -129,16 +129,20 @@ def listar_ingresos():
 @app.route("/ingresos_unUsuario", methods=["GET", "POST"])
 @login_required
 def ingresos_unUsuario():
-    if request.method == "POST":
-        url = URL.IP+"ingresos_unUsuario"
-        data = request.form.to_dict()
-        data.pop("csrf_token")
-        datos = requests.post(url, json=data)
-        ingresos = datos.text
-        ingresos = json.loads(ingresos)
-        return render_template('ingresos_unUsuario.html', listar=ingresos)
-    else:
-        return render_template('ingresos_unUsuario.html')
+    try:
+        if request.method == "POST":
+            url = URL.IP+"ingresos_unUsuario"
+            data = request.form.to_dict()
+            data.pop("csrf_token")
+            datos = requests.post(url, json=data)
+            ingresos = datos.text
+            ingresos = json.loads(ingresos)
+            return render_template('ingresos_unUsuario.html', listar=ingresos)
+        else:
+            return render_template('ingresos_unUsuario.html')
+    except Exception as e:
+            flash("El Usuario no presenta registros de ingresos")
+            return render_template('ingresos_unUsuario.html')
 
 
 @app.route("/Inasistencia_Detallada", methods=["GET", "POST"])
