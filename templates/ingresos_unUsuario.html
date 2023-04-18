@@ -8,20 +8,6 @@
         <div class="col-lg-4">
         </div>
         <div class="col-lg-4">
-            {% with messages = get_flashed_messages() %}
-
-            {% if messages %}
-            <br />
-            {% for message in messages %}
-            <div class="alert alert-success d-flex align-items-center alert-dismissible" role="alert">
-                <strong>{{ message }}</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-            </div>
-            {% endfor %}
-
-            {% endif %}
-
-            {% endwith %}
             <form action="/ingresos_unUsuario" method="POST">
                 <h1 class="h2 mb-3 fw-bald" style="color: #07b66d;">Consulta de Ingresos</h1>
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -29,55 +15,48 @@
                     <input type="id_usuario" class="form-control shadow-sm" name="id_usuario" placeholder="ID USUARIO">
                     <label for="id_usuario">id_usuario</label>
                 </div>
-                <br>
                 <button class="w-20 btn btn-lg btn-success mb-2 fw-bald shadow-lg" type="submit"
                     style="color: #ffffff;">Consultar</button>
             </form>
         </div>
-        {% if listar %}
+        {% if listar is defined %}
+        {% if listar|length > 2 %}
         <h1>Ingresos del usuario : {{listar["0"]["nombre"]}} {{listar["0"]["apellido"]}}</h1>
-        {% endif %}
         <div class="row">
-            {% if listar %}
             <div class="table-responsive-sm">
-                <div class="table-responsive-sm">
-                    <table id="example3" class="table table-bordered table-striped " style="width:100%">
-                        <thead>
-                            <tr>
-                                <td class="text-center fw-bold bg-success">ID</td>
-                                <td class="text-center fw-bold bg-success">Nombres</td>
-                                <td class="text-center fw-bold bg-success">Apellidos</td>
-                                <td class="text-center fw-bold bg-success">ROL</td>
-                                <td class="text-center fw-bold bg-success">FECHA</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for ingreso in listar.values() %}
-                            <tr>
-                                <td class="fw-bold">{{(ingreso['id'])}}</td>
-                                <td class="fw-bold">{{(ingreso['nombre'])}}</td>
-                                <td class="fw-bold">{{(ingreso['apellido'])}}</td>
-                                <td class="fw-bold">
-                                    <span class="badge rounded-pill bg-warning"
-                                        style="color: black;">{{(ingreso['tipo'])}}</span>
-                                </td>
-                                <td class="fw-bold">{{(ingreso['fecha'])}}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <button id="export-btn3" class="w-10 btn btn-lg btn-success mb-2 fw-bald shadow-lg"
-                    data-bs-dismiss="btn-success" aria-label="btn-success">Excel</button>
+                <table id="example3" class="table table-bordered table-striped " style="width:100%">
+                    <thead>
+                        <tr>
+                            <td class="text-center fw-bold bg-success">ID</td>
+                            <td class="text-center fw-bold bg-success">Nombres</td>
+                            <td class="text-center fw-bold bg-success">Apellidos</td>
+                            <td class="text-center fw-bold bg-success">ROL</td>
+                            <td class="text-center fw-bold bg-success">FECHA</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ingreso in listar.values() %}
+                        <tr>
+                            <td class="fw-bold">{{(ingreso['id'])}}</td>
+                            <td class="fw-bold">{{(ingreso['nombre'])}}</td>
+                            <td class="fw-bold">{{(ingreso['apellido'])}}</td>
+                            <td class="fw-bold">
+                                <span class="badge rounded-pill bg-warning"
+                                    style="color: black;">{{(ingreso['tipo'])}}</span>
+                            </td>
+                            <td class="fw-bold">{{(ingreso['fecha'])}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
-            {% endif %}
+            <button id="export-btn3" class="w-10 btn btn-lg btn-success mb-2 fw-bald shadow-lg"
+                    data-bs-dismiss="btn-success" aria-label="btn-success">Excel</button>
         </div>
+        {% else %}
+        <h1>{{ listar['mensaje'] }}</h1>
+        {% endif %}
+        {% endif %}
     </div>
 </div>
-
-
-
-
-
-
 {% endblock %}

@@ -141,8 +141,8 @@ def ingresos_unUsuario():
         else:
             return render_template('ingresos_unUsuario.html')
     except Exception as e:
-            flash("El Usuario no presenta registros de ingresos")
-            return render_template('ingresos_unUsuario.html')
+        flash("El Usuario no presenta registros de ingresos")
+        return render_template('ingresos_unUsuario.html')
 
 
 @app.route("/Inasistencia_Detallada", methods=["GET", "POST"])
