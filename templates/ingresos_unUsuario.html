@@ -15,6 +15,7 @@
                     <input type="id_usuario" class="form-control shadow-sm" name="id_usuario" placeholder="ID USUARIO">
                     <label for="id_usuario">id_usuario</label>
                 </div>
+                <br>
                 <button class="w-20 btn btn-lg btn-success mb-2 fw-bald shadow-lg" type="submit"
                     style="color: #ffffff;">Consultar</button>
             </form>
@@ -49,9 +50,9 @@
                         {% endfor %}
                     </tbody>
                 </table>
+                <button id="export-btn3" class="w-10 btn btn-lg btn-success mb-2 fw-bald shadow-lg"
+                        data-bs-dismiss="btn-success" aria-label="btn-success">Excel</button>
             </div>
-            <button id="export-btn3" class="w-10 btn btn-lg btn-success mb-2 fw-bald shadow-lg"
-                    data-bs-dismiss="btn-success" aria-label="btn-success">Excel</button>
         </div>
         {% else %}
         <h1>{{ listar['mensaje'] }}</h1>
